@@ -48,6 +48,12 @@ userSchema.virtual('password')
 });
 
 userSchema.methods = {
+
+    // Checking the password for signIn is matching to the password in the db for the user.
+    authenticate: function(plainText){
+        return this.encrpytPassword(plainText) === this.hashed_password;
+    },
+
     encrpytPassword: function(password){
         if(!password)
             return '';
