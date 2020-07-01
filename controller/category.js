@@ -62,13 +62,13 @@ exports.remove =(req, res) => {
 }
 
 exports.list =(req, res) => {
-    Category.find().exec((err, data) => {
+    Category.find().exec((err, categories) => {
         if(err){
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
 
-        res.json(data);
+        res.json(categories);
     });
 }
