@@ -1,5 +1,5 @@
 const express = require('express');
-const { create, productById, read, remove, update, list, listRelated } = require('../controller/product');
+const { create, productById, read, remove, update, list, listRelated, listCategories, listBySearch } = require('../controller/product');
 const { requireSignIn, isAuth, isAdmin } = require('../controller/auth');
 const { userById } = require('../controller/user');
 
@@ -13,6 +13,8 @@ router.delete('/product/:productId/:userId', requireSignIn, isAuth, isAdmin, rem
 router.put('/product/:productId/:userId', requireSignIn, isAuth, isAdmin, update);
 router.get('/products', list);
 router.get('/products/related/:productId', listRelated);
+router.get('/products/categories', listCategories);
+router.post('/products/by/search', listBySearch);
 
 router.param('userId', userById);
 router.param('productId', productById);
