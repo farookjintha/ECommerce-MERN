@@ -25,6 +25,10 @@ mongoose.connect(process.env.DATABASE, {
     useUnifiedTopology: true
 }).then(() => console.log('Database Connected...'));
 
+mongoose.connection.on('error', err => {
+    console.log(`DB connection error: ${err.message}`)
+  });
+
 //Middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());

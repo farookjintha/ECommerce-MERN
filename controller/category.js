@@ -41,7 +41,6 @@ exports.update =(req, res) => {
                 error: errorHandler(err)
             });
         }
-
         res.json(data);
     });
 }
@@ -68,7 +67,6 @@ exports.list =(req, res) => {
                 error: errorHandler(err)
             });
         }
-
         res.json(categories);
     });
 }
