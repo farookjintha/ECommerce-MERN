@@ -61,7 +61,7 @@ exports.create = (req, res) => {
 
             // If the photo size is more that 1 mb
             if(files.photo.size > 1000000){
-                res.status(400).json({
+                return res.status(400).json({
                     error : "File size exceeded. Image should be less than 1 MB size."
                 });
             }

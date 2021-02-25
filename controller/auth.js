@@ -36,7 +36,7 @@ exports.signin = (req, res) =>{
         // Create authentication method in user model
         if(!user.authenticate(password)){
             return res.status(401).json({
-                error: 'Email & Password do not match'
+                err: 'Email & Password do not match'
             })
         }
 
@@ -67,7 +67,7 @@ exports.isAuth = (req, res, next) =>{
     let user = req.profile && req.auth && req.profile._id == req.auth._id;
     if(!user){
         return res.status(403).json({
-            error: "Access denied"
+            err: "Access denied"
         });
     }
     next();
@@ -76,7 +76,7 @@ exports.isAuth = (req, res, next) =>{
 exports.isAdmin = (req, res, next) => {
     if(req.profile.role === 0){
         res.status(403).json({
-            error: "Admin resource: Access denied!"
+            err: "Admin resource: Access denied!"
         });
     }
     next();
